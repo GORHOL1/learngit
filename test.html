@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>拼图</title>
+
+<head>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <div class="family">
+        拼图游戏
+        <br>
+        <br>
+        <div class="first">
+            <div id="d1" onclick="move(1)">
+                <img class="img" id="img1" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 1
+            </div>
+            <div id="d2" onclick="move(2)">
+                <img class="img" id="img2" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 2
+            </div>
+            <div id="d3" onclick="move(3)">
+                <img class="img" id="img3" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 3
+            </div>
+            <div id="d4" onclick="move(4)">
+                <img class="img" id="img4" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 4
+            </div>
+            <div id="d5" onclick="move(5)">
+                <img class="img" id="img5" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 5
+            </div>
+            <div id="d6" onclick="move(6)">
+                <img class="img" id="img6" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 6
+            </div>
+            <div id="d7" onclick="move(7)">
+                <img class="img" id="img7" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 7
+            </div>
+            <div id="d8" onclick="move(8)">
+                <img class="img" id="img8" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 8
+            </div>
+        </div>
+        <div class="second" id="imgDiv">
+            <button type="button" id="start" onclick="start()">开始</button>
+            <br>
+            <button type="button" id="reset" onclick="reset1()">暂停</button>
+            <br>
+            <button type="button" style="position:relative;overflow: hidden;">图片
+            <input type="file" id="get2" style="opacity:0 ;position:absolute;top:0px;left:0px;right:0px;" onchange="get()">
+            </button>
+            <br>
+            <img alt="" id="imgContent">
+            <br>
+            <span id="txt"></span>
+        </div>
+    </div>
+</body>
+
+</html>
