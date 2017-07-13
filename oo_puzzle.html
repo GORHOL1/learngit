@@ -7,34 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
     <link rel="stylesheet" href="oo_puzzle.css">
     <script type="text/javascript" src="oo_puzzle.js"></script>
-    <script type="text/javascript">
-        function file(){
-            var file1 = document.getElementById("get2")
-            file1.click();
-        }
-         window.onload = function(){
-        var divId = document.getElementById("d")
-        divId.onclick = function(ev)
-        {
-           
-            var target = ev.target || ev.srcElement;
-            
-
-            if(target.nodeName.toLocaleLowerCase() == 'img')
-            {
-                
-                var Id = target.id;
-                var idMove = Id.split("")
-                var partOfpuzzle = new Puzzle(idMove[3]);     
-                         
-                partOfpuzzle.move();
-            }
-        }
-        
-        
-    }
-  
-    </script>
 </head>
 
 <body>
@@ -44,53 +16,50 @@
         <br>
         <div class="first" id="d">
             <div id="d1">
-                <img class="img" id="img1" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 1
+              
             </div>
             <div id="d2">
-                <img class="img" id="img2" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 2
+                
             </div>
             <div id="d3">
-                <img class="img" id="img3" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 3
+                
             </div>
             <div id="d4">
-                <img class="img" id="img4" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 4
+                
             </div>
             <div id="d5">
-                <img class="img" id="img5" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 5
+               
             </div>
             <div id="d6">
-                <img class="img" id="img6" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 6
+               
             </div>
             <div id="d7">
-                <img class="img" id="img7" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 7
+               
             </div>
             <div id="d8">
-                <img class="img" id="img8" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 8
+               
             </div>
         </div>
         <div class="second" id="imgDiv">
+            <!--点击start的button，开始游戏-->
             <button type="button" id="start" onclick="start()">开始</button>
             <br>
+            <!--点击reset的button，重置游戏拼图方块-->
             <button type="button" id="reset" onclick="reset1()">重置</button>
             <br>
-           
-   
-             <input type="button" name="" value="图片" onclick="file()">
-
-                </input>
-    <input type="file" id="get2" style="position:absolute;opacity:100;top:0px;left:0px;display:none"  onchange="get()">
-        
-
-           
-       
+            <!--点击get的button表示获取图片-->
+            <input type="button" name="get" value="图片" onclick="file()">
+            </input>
+            <input type="file" id="get2" style="position:absolute;opacity:100;top:0px;left:0px;display:none" onchange="get()">
+            <br>
             <img alt="" id="imgContent">
             <span id="txt"></span>
         </div>
     </div>
-    <div class="record" >
-            记录：
-            <br>
-            <span id = record1></span>
+    <div class="record">
+        记录：
+        <br>
+        <span id=r ecord1></span>
     </div>
 </body>
 

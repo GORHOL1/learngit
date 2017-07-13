@@ -58,6 +58,8 @@ body {
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    background-image: url('http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg');
+    background-size: 300px 300px;
 }
 
 .first *:hover {
@@ -102,113 +104,4 @@ body {
 #d8 {
     left: 100px;
     top: 200px
-}
-
-#img1 {
-    position: absolute;
-    clip: rect(0px 100px 100px 0px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: 0px;
-    top: 0px;
-}
-
-#img2 {
-    position: absolute;
-    clip: rect(0px 200px 100px 100px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: -100px;
-    top: 0px;
-}
-
-#img3 {
-    position: absolute;
-    clip: rect(0px 300px 100px 200px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: -200px;
-    top: 0px;
-}
-
-#img4 {
-    position: absolute;
-    clip: rect(100px 100px 200px 0px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: 0px;
-    top: -100px;
-}
-
-#img5 {
-    position: absolute;
-    clip: rect(100px 200px 200px 100px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: -100px;
-    top: -100px;
-}
-
-#img6 {
-    position: absolute;
-    clip: rect(100px 300px 200px 200px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: -200px;
-    top: -100px;
-}
-
-#img7 {
-    position: absolute;
-    clip: rect(200px 100px 300px 0px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: 0px;
-    top: -200px;
-}
-
-#img8 {
-    position: absolute;
-    clip: rect(200px 200px 300px 100px);
-    width: 300px;
-    height: 300px;
-    border-style: 0px;
-    left: -100px;
-    top: -200px;
-}
-
-.a-upload {
-
-    height: 40px;
-    position: relative;
-    cursor: pointer;
-    color: #888;
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.a-upload #get2 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    cursor: pointer
-}
-
-.a-upload:hover {
-    color: #444;
-    background: #eee;
-    border-color: #ccc;
-    text-decoration: none
 }

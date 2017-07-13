@@ -11,6 +11,57 @@ var add
 var timeOut
 var txt2
 
+function file () { // 利用button的点击事件，调用input的file类型读取图片函数
+  var file1 = document.getElementById('get2')
+  file1.click()
+}
+
+window.onload = function () {
+  var Width = document.getElementById('d').clientWidth
+
+  var row = 3
+  var rowsWidth = Width / row
+  var array = new Array()
+
+  for (var k = 0; k < row * row - 1; k++) {
+    array[k] = new Array()
+    for (var j = 0; j < 2; j++) {
+      array[k][j] = ''
+    }
+  }
+
+  for (var a = 0; a < row * row - 1; a++) {
+    var cols = a % row
+    var rows = a / row
+    // alert(a)
+    for (var b = 0; b < 2; b++) {
+      if (b === 0) {
+        array[a][b] = -cols * rowsWidth
+      } else {
+        array[a][b] = -rows * rowsWidth
+      }
+    }
+
+    var aa = a + 1
+    document.getElementById('d' + aa).style.backgroundPositionX = array[a][0] + 'px'
+    document.getElementById('d' + aa).style.backgroundPositionY = array[a][1] + 'px'
+  }
+
+  // 事件委托，点击图片时若合法，移动该图片
+  var divId = document.getElementById('d')
+  divId.onclick = function (ev) {
+    var target = ev.target || ev.srcElement
+
+    if (target.nodeName.toLocaleLowerCase() === 'div') {
+      var Id = target.id
+      var idMove = Id.split('')
+      var partOfpuzzle = new Puzzle(idMove[1])
+
+      partOfpuzzle.move()
+    }
+  }
+}
+
 function Puzzle (id) {
   this.id = id
 }
@@ -76,7 +127,7 @@ function reset1 () {
   }
   second = 0
   min = 0
-  firstTime = true
+  // firstTime = true
   firstMove = false
   setTimeout("document.getElementById('txt').innerHTML = min + '分' + second + '秒'", 0)
   clearTimeout(timeOut)
@@ -88,10 +139,9 @@ function start () {
   // alert(window.outerWidth + ' ' + window.outerHeight);
   if (firstTime === true) {
     reset1()
-    firstMove = true
     firstTime = false
   }
-
+  firstMove = true
   if (jud1 === true) {
     time_go()
     jud1 = false
