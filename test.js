@@ -1,147 +1,135 @@
+var d = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 0)
+var dire = new Array([0], [2, 4], [1, 3, 5], [2, 6], [1, 5, 7], [2, 4, 6, 8], [3, 5, 9], [4, 8], [5, 7, 9], [6, 8])
+var pos = new Array([0], [0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200], [200, 200])
+var c = 0
+var v
+var jud1 = true
+var finish = true
+var min = 0
+var get1
+var first_time = true
+var first_move = false
 
-function Puzzle (id) {
-  this.numIndiv = [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
-  this.this.direcctionValidate = [[0], [2, 4], [1, 3, 5], [2, 6], [1, 5, 7], [2, 4, 6, 8], [3, 5, 9], [4, 8], [5, 7, 9], [6, 8]]
-  this.position = [[0], [0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200], [200, 200]]
-  this.second = 0
-  this.min = 0
-  this.timeOut = 0
-  this.judge = true
-  this.finish = true
-  this.add = 0
-  this.firstTime = true
-  this.firstMove = false
-  this.id = id
-}
-
-
-Puzzle.prototype.move = function (id) {
-  if (this.firstMove === true) {
-    var i, g
-
+function move (id) {
+  if (first_move == true) {
+    var i = 1
     var jud = false
 
     for (i = 1; i < 10; ++i) {
-      if ([i] === id) {
-        break
-      }
+      if (d[i] == id) { break}
     }
 
-    for (g = 0; g < this.this.direcctionValidate[i].length; g++) {
-      if (this.numIndiv[this.this.direcctionValidate[i][g]] === 0) {
+    var g
+
+    for (g = 0; g < dire[i].length; g++) {
+      if (d[dire[i][g]] == 0) {
         jud = true
         break
       }
     }
 
-    var tmp1 = this.direcctionValidate[i][g]
+    var tmp1 = dire[i][g]
     var tmp2
 
-    this.finish = function () {
-      judging(this)
+    finish = judging()
+
+    if (jud == true) {
+      document.getElementById('d' + id).style.left = pos[tmp1][0] + 'px'
+      document.getElementById('d' + id).style.top = pos[tmp1][1] + 'px'
+      tmp2 = d[i]
+      d[i] = d[tmp1]
+      d[tmp1] = tmp2
     }
 
-    if (jud === true) {
-      document.getElementById('d' + id).style.left = this.position[tmp1][0] + 'px'
-      document.getElementById('d' + id).style.top = this.position[tmp1][1] + 'px'
-      tmp2 = this.numIndiv[i]
-      this.numIndiv[i] = this.numIndiv[tmp1]
-      this.numIndiv[tmp1] = tmp2
-    }
+    finish = judging()
 
-    this.finish = judging()
-
-    if (this.finish === true) {
+    if (finish == true) {
       alert('congratulation!!!')
       reset1()
-      this.finish = false
+      finish = false
     }
   }
 }
 
-Puzzle.prototype.reset1 = function () {
+function reset1 () {
   for (var index = 1; index < 10; index++) {
     var ran = parseInt(Math.random() * 8 + 1)
-    if (this.numIndiv[index] !== 0) {
-      document.getElementById('d' + this.numIndiv[index]).style.left = this.position[ran][0] + 'px'
-      document.getElementById('d' + this.numIndiv[index]).style.top = this.position[ran][1] + 'px'
+    if (d[index] != 0) {
+      document.getElementById('d' + d[index]).style.left = pos[ran][0] + 'px'
+      document.getElementById('d' + d[index]).style.top = pos[ran][1] + 'px'
     }
 
-    if (this.numIndiv[ran] !== 0) {
-      document.getElementById('d' + this.numIndiv[ran]).style.left = this.position[index][0] + 'px'
-      document.getElementById('d' + this.numIndiv[ran]).style.top = this.position[index][1] + 'px'
+    if (d[ran] != 0) {
+      document.getElementById('d' + d[ran]).style.left = pos[index][0] + 'px'
+      document.getElementById('d' + d[ran]).style.top = pos[index][1] + 'px'
     }
 
-    var tem2 = this.numIndiv[index]
-    this.numIndiv[index] = this.numIndiv[ran]
-    this.numIndiv[ran] = tem2
+    var tem2 = d[index]
+    d[index] = d[ran]
+    d[ran] = tem2
   }
-  this.second = 0
-  this.min = 0
-  this.firstTime = true
-  this.firstMove = false
-  setTimeout("document.getElementById('txt').innerHTML = min + 'åˆ†' + c + 'ç§’'", 0)
-  clearTimeout(this.timeOut)
-  document.getElementById('start').innerHTML = 'å¼€å§‹'
-  this.judge = true
+  c = 0
+  min = 0
+  first_time = true
+  first_move = false
+  setTimeout("document.getElementById('txt').innerHTML = min + '·Ö' + c + 'Ãë'", 0)
+  clearTimeout(v)
+  document.getElementById('start').innerHTML = '¿ªÊ¼'
+  jud1 = true
 }
 
-Puzzle.prototype.start = function () {
+function start () {
   // alert(window.outerWidth + ' ' + window.outerHeight);
-  if (this.firstTime === true) {
+  if (first_time == true) {
     reset1()
-    this.firstMove = true
-    this.firstTime = false
+    first_move = true
+    first_time = false
   }
 
-  if (this.judge === true) {
-    timeGo()
-    this.judge = false
-    document.getElementById('start').innerHTML = 'æš‚åœ'
+  if (jud1 == true) {
+    time_go()
+    jud1 = false
+    document.getElementById('start').innerHTML = 'ÔÝÍ£'
   } else {
-    timeStop()
-    this.judge = true
-    document.getElementById('start').innerHTML = 'å¼€å§‹'
+    time_stop()
+    jud1 = true
+    document.getElementById('start').innerHTML = '¿ªÊ¼'
   }
 }
 
-Puzzle.prototype.judging = function () {
+function judging () {
   for (var index1 = 1; index1 < 10; index1++) {
     if (index1 <= 8) {
-      if (index1 !== this.numIndiv[index1]) {
-        this.finish = false
-      }
+      if (index1 != d[index1]) { finish = false}
     }
 
-    if (index1 === 9) {
-      if (this.numIndiv[index1] !== 0) {
-        this.finish = false
-      }
+    if (index1 == 9) {
+      if (d[index1] != 0) { finish = false}
     }
   }
-  return this.finish
+  return finish
 }
 
-Puzzle.prototype.timeGo = function () {
-  this.second = this.second + 1
-  this.add = this.second / 60
-  this.second = this.second % 60
-  if (this.add === 1) {
-    this.min += 1
+function time_go () {
+  c = c + 1
+  add = c / 60
+  c = c % 60
+  if (add == 1) {
+    min += 1
   }
-  document.getElementById('txt').innerHTML = this.min + 'åˆ†' + this.second + 'ç§’'
-  this.timeOut = setTimeout('timeGo()', 1000)
+  document.getElementById('txt').innerHTML = min + '·Ö' + c + 'Ãë'
+  v = setTimeout('time_go()', 1000)
 }
 
-Puzzle.prototype.timeStop = function () {
+function time_stop () {
   // setTimeout("document.getElementById('txt').innerHTML = '1111111'", 0);
 
-  clearTimeout(this.timeOut)
+  clearTimeout(v)
 }
 
 function get () {
-  var file = $('#imgDiv').find('input')[0].files[0]
-  // var file = $('#get2')[0].files[0]
+  // var file = $("#imgDiv").find("input")[0].files[0];
+  var file = $('#get2')[0].files[0]
   var reader = new FileReader()
 
   var imgFile
