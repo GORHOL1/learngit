@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="oo_puzzle.css">
     <script type="text/javascript" src="oo_puzzle.js"></script>
     <script type="text/javascript">
-      
+        function file(){
+            var file1 = document.getElementById("get2")
+            file1.click();
+        }
          window.onload = function(){
         var divId = document.getElementById("d")
         divId.onclick = function(ev)
@@ -70,14 +73,24 @@
             <br>
             <button type="button" id="reset" onclick="reset1()">÷ÿ÷√</button>
             <br>
-            <button type="button" style="position:relative;overflow: hidden;">Õº∆¨
-            <input type="file" id="get2" style="opacity:0 ;position:absolute;top:0px;left:0px;right:0px;" onchange="get()">
-            </button>
-            <br>
+           
+   
+             <input type="button" name="" value="Õº∆¨" onclick="file()">
+
+                </input>
+    <input type="file" id="get2" style="position:absolute;opacity:100;top:0px;left:0px;display:none"  onchange="get()">
+        
+
+           
+       
             <img alt="" id="imgContent">
-            <br>
             <span id="txt"></span>
         </div>
+    </div>
+    <div class="record" >
+            º«¬º£∫
+            <br>
+            <span id = record1></span>
     </div>
 </body>
 

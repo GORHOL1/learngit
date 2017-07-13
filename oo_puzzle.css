@@ -10,11 +10,25 @@ body {
 
 .family {
     position: relative;
+    display: inline-block;
     left: 470px;
     top: 100px;
     width: 400px;
     height: 400px;
     border: 2px solid black;
+    border-right: 1px solid black;
+}
+.record{
+    position: absolute;
+    overflow: auto;
+    left: 871px;
+    top: 100px;
+    width: 150px;
+    height: 400px;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 1px solid black;
 }
 
 .first {
@@ -168,4 +182,33 @@ body {
     border-style: 0px;
     left: -100px;
     top: -200px;
+}
+
+.a-upload {
+
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.a-upload #get2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
 }

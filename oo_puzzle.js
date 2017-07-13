@@ -1,17 +1,17 @@
-var d = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 0)
-var dire = new Array([0], [2, 4], [1, 3, 5], [2, 6], [1, 5, 7], [2, 4, 6, 8], [3, 5, 9], [4, 8], [5, 7, 9], [6, 8])
-var pos = new Array([0], [0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200], [200, 200])
-var c = 0
-var min = 0
-var v
+var direction = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 0)
+var directionAvail = new Array([0], [2, 4], [1, 3, 5], [2, 6], [1, 5, 7], [2, 4, 6, 8], [3, 5, 9], [4, 8], [5, 7, 9], [6, 8])
+var position = new Array([0], [0, 0], [100, 0], [200, 0], [0, 100], [100, 100], [200, 100], [0, 200], [100, 200], [200, 200])
 var jud1 = true
 var finish = true
-var add
 var firstTime = true
 var firstMove = false
+var second = 0
+var min = 0
+var add
+var timeOut
+var txt2
 
-
-function Puzzle(id) {
+function Puzzle (id) {
   this.id = id
 }
 
@@ -21,31 +21,29 @@ Puzzle.prototype.move = function () {
     var jud = false
 
     for (i = 1; i < 10; ++i) {
-      if (d[i] == this.id) {
+      if (direction[i] == this.id) {
         break
       }
     }
 
     var g
 
-    for (g = 0; g < dire[i].length; g++) {
-      if (d[dire[i][g]] === 0) {
+    for (g = 0; g < directionAvail[i].length; g++) {
+      if (direction[directionAvail[i][g]] === 0) {
         jud = true
         break
       }
     }
 
-    var tmp1 = dire[i][g]
+    var tmp1 = directionAvail[i][g]
     var tmp2
 
-    finish = judging()
-
     if (jud === true) {
-      document.getElementById('d' + this.id).style.left = pos[tmp1][0] + 'px'
-      document.getElementById('d' + this.id).style.top = pos[tmp1][1] + 'px'
-      tmp2 = d[i]
-      d[i] = d[tmp1]
-      d[tmp1] = tmp2
+      document.getElementById('d' + this.id).style.left = position[tmp1][0] + 'px'
+      document.getElementById('d' + this.id).style.top = position[tmp1][1] + 'px'
+      tmp2 = direction[i]
+      direction[i] = direction[tmp1]
+      direction[tmp1] = tmp2
     }
 
     finish = judging()
@@ -53,6 +51,7 @@ Puzzle.prototype.move = function () {
     if (finish === true) {
       alert('congratulation!!!')
       reset1()
+      document.getElementById('record1').innerHTML = min + '分' + second + '秒' + '<br>'
       finish = false
     }
   }
@@ -61,26 +60,26 @@ Puzzle.prototype.move = function () {
 function reset1 () {
   for (var index = 1; index < 10; index++) {
     var ran = parseInt(Math.random() * 9 + 1)
-    if (d[index] !== 0) {
-      document.getElementById('d' + d[index]).style.left = pos[ran][0] + 'px'
-      document.getElementById('d' + d[index]).style.top = pos[ran][1] + 'px'
+    if (direction[index] !== 0) {
+      document.getElementById('d' + direction[index]).style.left = position[ran][0] + 'px'
+      document.getElementById('d' + direction[index]).style.top = position[ran][1] + 'px'
     }
 
-    if (d[ran] !== 0) {
-      document.getElementById('d' + d[ran]).style.left = pos[index][0] + 'px'
-      document.getElementById('d' + d[ran]).style.top = pos[index][1] + 'px'
+    if (direction[ran] !== 0) {
+      document.getElementById('d' + direction[ran]).style.left = position[index][0] + 'px'
+      document.getElementById('d' + direction[ran]).style.top = position[index][1] + 'px'
     }
 
-    var tem2 = d[index]
-    d[index] = d[ran]
-    d[ran] = tem2
+    var tem2 = direction[index]
+    direction[index] = direction[ran]
+    direction[ran] = tem2
   }
-  c = 0
+  second = 0
   min = 0
   firstTime = true
   firstMove = false
-  setTimeout("document.getElementById('txt').innerHTML = min + '分' + c + '秒'", 0)
-  clearTimeout(v)
+  setTimeout("document.getElementById('txt').innerHTML = min + '分' + second + '秒'", 0)
+  clearTimeout(timeOut)
   document.getElementById('start').innerHTML = '开始'
   jud1 = true
 }
@@ -107,31 +106,33 @@ function start () {
 function judging () {
   for (var index1 = 1; index1 < 10; index1++) {
     if (index1 <= 8) {
-      if (index1 !== d[index1]) { finish = false}
+      if (index1 !== direction[index1]) { return false }
     }
 
     if (index1 === 9) {
-      if (d[index1] !== 0) { finish = false}
+      if (direction[index1] !== 0) { return false }
+    } else {
+      return true
     }
   }
   return finish
 }
 
 function time_go () {
-  c = c + 1
-  add = c / 60
-  c = c % 60
+  second = second + 1
+  add = second / 60
+  second = second % 60
   if (add === 1) {
     min += 1
   }
-  document.getElementById('txt').innerHTML = min + '分' + c + '秒'
-  v = setTimeout('time_go()', 1000)
+  document.getElementById('txt').innerHTML = min + '分' + second + '秒'
+  timeOut = setTimeout('time_go()', 1000)
 }
 
 function time_stop () {
   // setTimeout("document.getElementById('txt').innerHTML = '1111111'", 0);
 
-  clearTimeout(v)
+  clearTimeout(timeOut)
 }
 
 function get () {
