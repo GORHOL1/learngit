@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
 <title>拼图</title>
 
 <head>
@@ -9,57 +7,62 @@
     <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
     <link rel="stylesheet" href="test.css">
     <script type="text/javascript" src="test.js"></script>
-
-    <script>
+    <script type="text/javascript">
+      
          window.onload = function(){
         var divId = document.getElementById("d")
-        var divTag = divId.document.getElementsByTagName('div');
-        for (var h = 0; h < divTag.length; h++) {
-          divTag[h].onclick = function () {
-            var id = document.getElementById("d" + h)
-            move(h);
-          }
-          
-        }  
+        divId.onclick = function(ev)
+        {
+           
+            var target = ev.target || ev.srcElement;
+            
+
+            if(target.nodeName.toLocaleLowerCase() == 'img')
+            {
+                
+                var Id = target.id;
+                var idMove = Id.split("")              
+                move(idMove[3])
+            }
+        }
+        
+        
     }
+  
     </script>
-
 </head>
-
 
 <body>
     <div class="family">
         拼图游戏
         <br>
         <br>
-        <div class="first" id="d"> 
-            <div id="d1" >
+        <div class="first" id="d">
+            <div id="d1">
                 <img class="img" id="img1" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 1
             </div>
-            <div id="d2" >
+            <div id="d2">
                 <img class="img" id="img2" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 2
             </div>
-            <div id="d3" >
+            <div id="d3">
                 <img class="img" id="img3" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 3
             </div>
-            <div id="d4" >
+            <div id="d4">
                 <img class="img" id="img4" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 4
             </div>
-            <div id="d5" >
+            <div id="d5">
                 <img class="img" id="img5" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 5
             </div>
-            <div id="d6" >
+            <div id="d6">
                 <img class="img" id="img6" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 6
             </div>
-            <div id="d7" >
+            <div id="d7">
                 <img class="img" id="img7" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 7
             </div>
-            <div id="d8" >
+            <div id="d8">
                 <img class="img" id="img8" src="http://dmimg.5054399.com/allimg/xyytuku/120309/x002.jpg"> 8
             </div>
-
         </div>
-
         <div class="second" id="imgDiv">
             <button type="button" id="start" onclick="start()">开始</button>
             <br>
@@ -70,17 +73,10 @@
             </button>
             <br>
             <img alt="" id="imgContent">
-
-
-
-
             <br>
             <span id="txt"></span>
-
-
         </div>
     </div>
-
 </body>
 
 </html>
