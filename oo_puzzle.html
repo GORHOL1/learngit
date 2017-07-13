@@ -5,8 +5,8 @@
 <head>
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
-    <link rel="stylesheet" href="test.css">
-    <script type="text/javascript" src="test.js"></script>
+    <link rel="stylesheet" href="oo_puzzle.css">
+    <script type="text/javascript" src="oo_puzzle.js"></script>
     <script type="text/javascript">
       
          window.onload = function(){
@@ -21,8 +21,10 @@
             {
                 
                 var Id = target.id;
-                var idMove = Id.split("")              
-                move(idMove[3])
+                var idMove = Id.split("")
+                var partOfpuzzle = new Puzzle(idMove[3]);     
+                         
+                partOfpuzzle.move();
             }
         }
         
