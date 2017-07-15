@@ -66,42 +66,4 @@ body {
     color: yellowgreen;
 }
 
-#d1 {
-    left: 0px;
-    top: 0px
-}
 
-#d2 {
-    left: 100px;
-    top: 0px
-}
-
-#d3 {
-    left: 200px;
-    top: 0px
-}
-
-#d4 {
-    left: 0px;
-    top: 100px
-}
-
-#d5 {
-    left: 100px;
-    top: 100px
-}
-
-#d6 {
-    left: 200px;
-    top: 100px
-}
-
-#d7 {
-    left: 0px;
-    top: 200px
-}
-
-#d8 {
-    left: 100px;
-    top: 200px
-}
